@@ -3,7 +3,7 @@
 #include "user/user.h"
 
 int main(int argc, char** argv){
-    // 注意，题目说pipe是单向的，所以要创建两个
+    // 注意，题目说pipe是单向的，所以要创建两个pipe
     int pipe_p2c[2], pipe_c2p[2] = {0};
     pipe(pipe_p2c);
     pipe(pipe_c2p);
