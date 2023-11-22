@@ -9,78 +9,78 @@
 
 // Fetch the uint64 at addr from the current process.
 int
-fetchaddr(uint64 addr, uint64 *ip)
+fetchaddr(uint64 addr, uint64* ip)
 {
-  struct proc *p = myproc();
-  if(addr >= p->sz || addr+sizeof(uint64) > p->sz)
-    return -1;
-  if(copyin(p->pagetable, (char *)ip, addr, sizeof(*ip)) != 0)
-    return -1;
-  return 0;
+    struct proc* p = myproc();
+    if (addr >= p->sz || addr + sizeof(uint64) > p->sz)
+        return -1;
+    if (copyin(p->pagetable, (char*)ip, addr, sizeof(*ip)) != 0)
+        return -1;
+    return 0;
 }
 
 // Fetch the nul-terminated string at addr from the current process.
 // Returns length of string, not including nul, or -1 for error.
 int
-fetchstr(uint64 addr, char *buf, int max)
+fetchstr(uint64 addr, char* buf, int max)
 {
-  struct proc *p = myproc();
-  int err = copyinstr(p->pagetable, buf, addr, max);
-  if(err < 0)
-    return err;
-  return strlen(buf);
+    struct proc* p = myproc();
+    int err = copyinstr(p->pagetable, buf, addr, max);
+    if (err < 0)
+        return err;
+    return strlen(buf);
 }
 
 static uint64
 argraw(int n)
 {
-  struct proc *p = myproc();
-  switch (n) {
-  case 0:
-    return p->trapframe->a0;
-  case 1:
-    return p->trapframe->a1;
-  case 2:
-    return p->trapframe->a2;
-  case 3:
-    return p->trapframe->a3;
-  case 4:
-    return p->trapframe->a4;
-  case 5:
-    return p->trapframe->a5;
-  }
-  panic("argraw");
-  return -1;
+    struct proc* p = myproc();
+    switch (n) {
+    case 0:
+        return p->trapframe->a0;
+    case 1:
+        return p->trapframe->a1;
+    case 2:
+        return p->trapframe->a2;
+    case 3:
+        return p->trapframe->a3;
+    case 4:
+        return p->trapframe->a4;
+    case 5:
+        return p->trapframe->a5;
+    }
+    panic("argraw");
+    return -1;
 }
 
 // Fetch the nth 32-bit system call argument.
 int
-argint(int n, int *ip)
+argint(int n, int* ip)
 {
-  *ip = argraw(n);
-  return 0;
+    *ip = argraw(n);
+    return 0;
 }
 
 // Retrieve an argument as a pointer.
 // Doesn't check for legality, since
 // copyin/copyout will do that.
 int
-argaddr(int n, uint64 *ip)
+argaddr(int n, uint64* ip)
 {
-  *ip = argraw(n);
-  return 0;
+    *ip = argraw(n);
+    return 0;
 }
 
 // Fetch the nth word-sized system call argument as a null-terminated string.
 // Copies into buf, at most max.
 // Returns string length if OK (including nul), -1 if error.
 int
-argstr(int n, char *buf, int max)
+argstr(int n, char* buf, int max)
 {
-  uint64 addr;
-  if(argaddr(n, &addr) < 0)
-    return -1;
-  return fetchstr(addr, buf, max);
+    uint64 addr;
+    if (argaddr(n, &addr) < 0)
+        return -1;
+    return fetchstr(addr, buf, max);
 }
 
 extern uint64 sys_chdir(void);
@@ -104,9 +104,35 @@ extern uint64 sys_unlink(void);
 extern uint64 sys_wait(void);
 extern uint64 sys_write(void);
 extern uint64 sys_uptime(void);
+extern uint64 sys_trace(void);
 
-static uint64 (*syscalls[])(void) = {
-[SYS_fork]    sys_fork,
+const char* syscall_names[] = {
+[SYS_fork] "fork",
+[SYS_exit]    "exit",
+[SYS_wait]    "wait",
+[SYS_pipe]    "pipe",
+[SYS_read]    "read",
+[SYS_kill]    "kill",
+[SYS_exec]    "exec",
+[SYS_fstat]   "fstat",
+[SYS_chdir]   "chdir",
+[SYS_dup]     "dup",
+[SYS_getpid]  "getpid",
+[SYS_sbrk]    "sbrk",
+[SYS_sleep]   "sleep",
+[SYS_uptime]  "uptime",
+[SYS_open]    "open",
+[SYS_write]   "write",
+[SYS_mknod]   "mknod",
+[SYS_unlink]  "unlink",
+[SYS_link]    "link",
+[SYS_mkdir]   "mkdir",
+[SYS_close]   "close",
+[SYS_trace]   "trace",
+};
+
+static uint64(*syscalls[])(void) = {
+[SYS_fork] sys_fork,
 [SYS_exit]    sys_exit,
 [SYS_wait]    sys_wait,
 [SYS_pipe]    sys_pipe,
@@ -127,20 +153,35 @@ static uint64 (*syscalls[])(void) = {
 [SYS_link]    sys_link,
 [SYS_mkdir]   sys_mkdir,
 [SYS_close]   sys_close,
+[SYS_trace]   sys_trace,
 };
 
 void
 syscall(void)
 {
-  int num;
-  struct proc *p = myproc();
+    int num;
+    struct proc* p = myproc();
 
-  num = p->trapframe->a7;
-  if(num > 0 && num < NELEM(syscalls) && syscalls[num]) {
-    p->trapframe->a0 = syscalls[num]();
-  } else {
-    printf("%d %s: unknown sys call %d\n",
+    num = p->trapframe->a7;
+    if (num > 0 && num < NELEM(syscalls) && syscalls[num]) {
+        p->trapframe->a0 = syscalls[num]();
+
+        // 当num和syscall_trace对应的系统调用序号相同时
+        // syscall_trace >> num为1，可进入if
+        // 比如syscall_trace=100000=2^5=32，表示我要跟踪read这个系统调用
+        // num若为5，则表示此刻就是在使用read这个syscall
+        // 那么(p->syscall_trace >> num) & 1为true
+        // 再比如syscall_trace=100100时表示跟踪read和exit
+        // 那么num=2和5时都会进入printf，跟踪成功
+        if ((p->syscall_trace >> num) & 1) {
+            printf("%d:syscall %s -> %d\n", p->pid, syscall_names[num], p->trapframe->a0);
+            // syscall_names[num]: 从 syscall 编号到 syscall 名的映射表
+        }
+    }
+
+    else {
+        printf("%d %s: unknown sys call %d\n",
             p->pid, p->name, num);
-    p->trapframe->a0 = -1;
-  }
+        p->trapframe->a0 = -1;
+    }
 }
