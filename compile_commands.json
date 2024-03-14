@@ -19,363 +19,11 @@
             "-fno-pie",
             "-no-pie",
             "-o",
-            "kernel/syscall.o",
-            "kernel/syscall.c"
+            "user/mkdir.o",
+            "user/mkdir.c"
         ],
         "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
-        "file": "kernel/syscall.c"
-    },
-    {
-        "arguments": [
-            "riscv64-linux-gnu-gcc",
-            "-c",
-            "-Wall",
-            "-Werror",
-            "-O",
-            "-fno-omit-frame-pointer",
-            "-ggdb",
-            "-DSOL_SYSCALL",
-            "-mcmodel=medany",
-            "-ffreestanding",
-            "-fno-common",
-            "-nostdlib",
-            "-mno-relax",
-            "-I.",
-            "-fno-stack-protector",
-            "-fno-pie",
-            "-no-pie",
-            "-o",
-            "kernel/exec.o",
-            "kernel/exec.c"
-        ],
-        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
-        "file": "kernel/exec.c"
-    },
-    {
-        "arguments": [
-            "riscv64-linux-gnu-gcc",
-            "-c",
-            "-Wall",
-            "-Werror",
-            "-O",
-            "-fno-omit-frame-pointer",
-            "-ggdb",
-            "-DSOL_SYSCALL",
-            "-mcmodel=medany",
-            "-ffreestanding",
-            "-fno-common",
-            "-nostdlib",
-            "-mno-relax",
-            "-I.",
-            "-fno-stack-protector",
-            "-fno-pie",
-            "-no-pie",
-            "-o",
-            "kernel/file.o",
-            "kernel/file.c"
-        ],
-        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
-        "file": "kernel/file.c"
-    },
-    {
-        "arguments": [
-            "riscv64-linux-gnu-gcc",
-            "-c",
-            "-Wall",
-            "-Werror",
-            "-O",
-            "-fno-omit-frame-pointer",
-            "-ggdb",
-            "-DSOL_SYSCALL",
-            "-mcmodel=medany",
-            "-ffreestanding",
-            "-fno-common",
-            "-nostdlib",
-            "-mno-relax",
-            "-I.",
-            "-fno-stack-protector",
-            "-fno-pie",
-            "-no-pie",
-            "-o",
-            "user/ulib.o",
-            "user/ulib.c"
-        ],
-        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
-        "file": "user/ulib.c"
-    },
-    {
-        "arguments": [
-            "riscv64-linux-gnu-gcc",
-            "-c",
-            "-Wall",
-            "-Werror",
-            "-O",
-            "-fno-omit-frame-pointer",
-            "-ggdb",
-            "-DSOL_SYSCALL",
-            "-mcmodel=medany",
-            "-ffreestanding",
-            "-fno-common",
-            "-nostdlib",
-            "-mno-relax",
-            "-I.",
-            "-fno-stack-protector",
-            "-fno-pie",
-            "-no-pie",
-            "-o",
-            "user/cat.o",
-            "user/cat.c"
-        ],
-        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
-        "file": "user/cat.c"
-    },
-    {
-        "arguments": [
-            "gcc",
-            "-c",
-            "-Werror",
-            "-Wall",
-            "-I.",
-            "-o",
-            "mkfs/mkfs",
-            "mkfs/mkfs.c"
-        ],
-        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
-        "file": "mkfs/mkfs.c"
-    },
-    {
-        "arguments": [
-            "riscv64-linux-gnu-gcc",
-            "-c",
-            "-Wall",
-            "-Werror",
-            "-O",
-            "-fno-omit-frame-pointer",
-            "-ggdb",
-            "-DSOL_SYSCALL",
-            "-mcmodel=medany",
-            "-ffreestanding",
-            "-fno-common",
-            "-nostdlib",
-            "-mno-relax",
-            "-I.",
-            "-fno-stack-protector",
-            "-fno-pie",
-            "-no-pie",
-            "-o",
-            "kernel/sysfile.o",
-            "kernel/sysfile.c"
-        ],
-        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
-        "file": "kernel/sysfile.c"
-    },
-    {
-        "arguments": [
-            "riscv64-linux-gnu-gcc",
-            "-c",
-            "-Wall",
-            "-Werror",
-            "-O",
-            "-fno-omit-frame-pointer",
-            "-ggdb",
-            "-DSOL_SYSCALL",
-            "-mcmodel=medany",
-            "-ffreestanding",
-            "-fno-common",
-            "-nostdlib",
-            "-mno-relax",
-            "-I.",
-            "-fno-stack-protector",
-            "-fno-pie",
-            "-no-pie",
-            "-o",
-            "user/grep.o",
-            "user/grep.c"
-        ],
-        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
-        "file": "user/grep.c"
-    },
-    {
-        "arguments": [
-            "riscv64-linux-gnu-gcc",
-            "-c",
-            "-Wall",
-            "-Werror",
-            "-O",
-            "-fno-omit-frame-pointer",
-            "-ggdb",
-            "-DSOL_SYSCALL",
-            "-mcmodel=medany",
-            "-ffreestanding",
-            "-fno-common",
-            "-nostdlib",
-            "-mno-relax",
-            "-I.",
-            "-fno-stack-protector",
-            "-fno-pie",
-            "-no-pie",
-            "-o",
-            "kernel/kalloc.o",
-            "kernel/kalloc.c"
-        ],
-        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
-        "file": "kernel/kalloc.c"
-    },
-    {
-        "arguments": [
-            "riscv64-linux-gnu-gcc",
-            "-c",
-            "-Wall",
-            "-Werror",
-            "-O",
-            "-fno-omit-frame-pointer",
-            "-ggdb",
-            "-DSOL_SYSCALL",
-            "-mcmodel=medany",
-            "-ffreestanding",
-            "-fno-common",
-            "-nostdlib",
-            "-mno-relax",
-            "-I.",
-            "-fno-stack-protector",
-            "-fno-pie",
-            "-no-pie",
-            "-o",
-            "kernel/bio.o",
-            "kernel/bio.c"
-        ],
-        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
-        "file": "kernel/bio.c"
-    },
-    {
-        "arguments": [
-            "riscv64-linux-gnu-gcc",
-            "-c",
-            "-Wall",
-            "-Werror",
-            "-O",
-            "-fno-omit-frame-pointer",
-            "-ggdb",
-            "-DSOL_SYSCALL",
-            "-mcmodel=medany",
-            "-ffreestanding",
-            "-fno-common",
-            "-nostdlib",
-            "-mno-relax",
-            "-I.",
-            "-fno-stack-protector",
-            "-fno-pie",
-            "-no-pie",
-            "-o",
-            "user/stressfs.o",
-            "user/stressfs.c"
-        ],
-        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
-        "file": "user/stressfs.c"
-    },
-    {
-        "arguments": [
-            "riscv64-linux-gnu-gcc",
-            "-c",
-            "-Wall",
-            "-Werror",
-            "-O",
-            "-fno-omit-frame-pointer",
-            "-ggdb",
-            "-DSOL_SYSCALL",
-            "-mcmodel=medany",
-            "-ffreestanding",
-            "-fno-common",
-            "-nostdlib",
-            "-mno-relax",
-            "-I.",
-            "-fno-stack-protector",
-            "-fno-pie",
-            "-no-pie",
-            "-o",
-            "user/wc.o",
-            "user/wc.c"
-        ],
-        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
-        "file": "user/wc.c"
-    },
-    {
-        "arguments": [
-            "riscv64-linux-gnu-gcc",
-            "-c",
-            "-Wall",
-            "-Werror",
-            "-O",
-            "-fno-omit-frame-pointer",
-            "-ggdb",
-            "-DSOL_SYSCALL",
-            "-mcmodel=medany",
-            "-ffreestanding",
-            "-fno-common",
-            "-nostdlib",
-            "-mno-relax",
-            "-I.",
-            "-fno-stack-protector",
-            "-fno-pie",
-            "-no-pie",
-            "-o",
-            "user/init.o",
-            "user/init.c"
-        ],
-        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
-        "file": "user/init.c"
-    },
-    {
-        "arguments": [
-            "riscv64-linux-gnu-gcc",
-            "-c",
-            "-Wall",
-            "-Werror",
-            "-O",
-            "-fno-omit-frame-pointer",
-            "-ggdb",
-            "-DSOL_SYSCALL",
-            "-mcmodel=medany",
-            "-ffreestanding",
-            "-fno-common",
-            "-nostdlib",
-            "-mno-relax",
-            "-I.",
-            "-fno-stack-protector",
-            "-fno-pie",
-            "-no-pie",
-            "-o",
-            "kernel/sleeplock.o",
-            "kernel/sleeplock.c"
-        ],
-        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
-        "file": "kernel/sleeplock.c"
-    },
-    {
-        "arguments": [
-            "riscv64-linux-gnu-gcc",
-            "-c",
-            "-Wall",
-            "-Werror",
-            "-O",
-            "-fno-omit-frame-pointer",
-            "-ggdb",
-            "-DSOL_SYSCALL",
-            "-mcmodel=medany",
-            "-ffreestanding",
-            "-fno-common",
-            "-nostdlib",
-            "-mno-relax",
-            "-I.",
-            "-fno-stack-protector",
-            "-fno-pie",
-            "-no-pie",
-            "-o",
-            "user/printf.o",
-            "user/printf.c"
-        ],
-        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
-        "file": "user/printf.c"
+        "file": "user/mkdir.c"
     },
     {
         "arguments": [
@@ -423,11 +71,11 @@
             "-fno-pie",
             "-no-pie",
             "-o",
-            "kernel/log.o",
-            "kernel/log.c"
+            "user/printf.o",
+            "user/printf.c"
         ],
         "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
-        "file": "kernel/log.c"
+        "file": "user/printf.c"
     },
     {
         "arguments": [
@@ -449,11 +97,11 @@
             "-fno-pie",
             "-no-pie",
             "-o",
-            "kernel/spinlock.o",
-            "kernel/spinlock.c"
+            "user/wc.o",
+            "user/wc.c"
         ],
         "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
-        "file": "kernel/spinlock.c"
+        "file": "user/wc.c"
     },
     {
         "arguments": [
@@ -475,11 +123,11 @@
             "-fno-pie",
             "-no-pie",
             "-o",
-            "kernel/proc.o",
-            "kernel/proc.c"
+            "user/echo.o",
+            "user/echo.c"
         ],
         "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
-        "file": "kernel/proc.c"
+        "file": "user/echo.c"
     },
     {
         "arguments": [
@@ -501,11 +149,22 @@
             "-fno-pie",
             "-no-pie",
             "-o",
-            "user/usertests.o",
-            "user/usertests.c"
+            "user/umalloc.o",
+            "user/umalloc.c"
         ],
         "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
-        "file": "user/usertests.c"
+        "file": "user/umalloc.c"
+    },
+    {
+        "arguments": [
+            "riscv64-linux-gnu-gcc",
+            "-c",
+            "-o",
+            "kernel/swtch.o",
+            "kernel/swtch.S"
+        ],
+        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
+        "file": "kernel/swtch.S"
     },
     {
         "arguments": [
@@ -527,11 +186,11 @@
             "-fno-pie",
             "-no-pie",
             "-o",
-            "user/rm.o",
-            "user/rm.c"
+            "kernel/kalloc.o",
+            "kernel/kalloc.c"
         ],
         "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
-        "file": "user/rm.c"
+        "file": "kernel/kalloc.c"
     },
     {
         "arguments": [
@@ -553,37 +212,11 @@
             "-fno-pie",
             "-no-pie",
             "-o",
-            "kernel/virtio_disk.o",
-            "kernel/virtio_disk.c"
+            "user/ln.o",
+            "user/ln.c"
         ],
         "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
-        "file": "kernel/virtio_disk.c"
-    },
-    {
-        "arguments": [
-            "riscv64-linux-gnu-gcc",
-            "-c",
-            "-Wall",
-            "-Werror",
-            "-O",
-            "-fno-omit-frame-pointer",
-            "-ggdb",
-            "-DSOL_SYSCALL",
-            "-mcmodel=medany",
-            "-ffreestanding",
-            "-fno-common",
-            "-nostdlib",
-            "-mno-relax",
-            "-I.",
-            "-fno-stack-protector",
-            "-fno-pie",
-            "-no-pie",
-            "-o",
-            "user/ls.o",
-            "user/ls.c"
-        ],
-        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
-        "file": "user/ls.c"
+        "file": "user/ln.c"
     },
     {
         "arguments": [
@@ -657,6 +290,32 @@
             "-fno-pie",
             "-no-pie",
             "-o",
+            "kernel/sleeplock.o",
+            "kernel/sleeplock.c"
+        ],
+        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
+        "file": "kernel/sleeplock.c"
+    },
+    {
+        "arguments": [
+            "riscv64-linux-gnu-gcc",
+            "-c",
+            "-Wall",
+            "-Werror",
+            "-O",
+            "-fno-omit-frame-pointer",
+            "-ggdb",
+            "-DSOL_SYSCALL",
+            "-mcmodel=medany",
+            "-ffreestanding",
+            "-fno-common",
+            "-nostdlib",
+            "-mno-relax",
+            "-I.",
+            "-fno-stack-protector",
+            "-fno-pie",
+            "-no-pie",
+            "-o",
             "kernel/fs.o",
             "kernel/fs.c"
         ],
@@ -667,12 +326,27 @@
         "arguments": [
             "riscv64-linux-gnu-gcc",
             "-c",
+            "-Wall",
+            "-Werror",
+            "-O",
+            "-fno-omit-frame-pointer",
+            "-ggdb",
+            "-DSOL_SYSCALL",
+            "-mcmodel=medany",
+            "-ffreestanding",
+            "-fno-common",
+            "-nostdlib",
+            "-mno-relax",
+            "-I.",
+            "-fno-stack-protector",
+            "-fno-pie",
+            "-no-pie",
             "-o",
-            "kernel/kernelvec.o",
-            "kernel/kernelvec.S"
+            "kernel/syscall.o",
+            "kernel/syscall.c"
         ],
         "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
-        "file": "kernel/kernelvec.S"
+        "file": "kernel/syscall.c"
     },
     {
         "arguments": [
@@ -694,11 +368,25 @@
             "-fno-pie",
             "-no-pie",
             "-o",
-            "kernel/pipe.o",
-            "kernel/pipe.c"
+            "kernel/log.o",
+            "kernel/log.c"
         ],
         "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
-        "file": "kernel/pipe.c"
+        "file": "kernel/log.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Werror",
+            "-Wall",
+            "-I.",
+            "-o",
+            "mkfs/mkfs",
+            "mkfs/mkfs.c"
+        ],
+        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
+        "file": "mkfs/mkfs.c"
     },
     {
         "arguments": [
@@ -720,37 +408,11 @@
             "-fno-pie",
             "-no-pie",
             "-o",
-            "user/umalloc.o",
-            "user/umalloc.c"
+            "kernel/string.o",
+            "kernel/string.c"
         ],
         "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
-        "file": "user/umalloc.c"
-    },
-    {
-        "arguments": [
-            "riscv64-linux-gnu-gcc",
-            "-c",
-            "-Wall",
-            "-Werror",
-            "-O",
-            "-fno-omit-frame-pointer",
-            "-ggdb",
-            "-DSOL_SYSCALL",
-            "-mcmodel=medany",
-            "-ffreestanding",
-            "-fno-common",
-            "-nostdlib",
-            "-mno-relax",
-            "-I.",
-            "-fno-stack-protector",
-            "-fno-pie",
-            "-no-pie",
-            "-o",
-            "kernel/vm.o",
-            "kernel/vm.c"
-        ],
-        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
-        "file": "kernel/vm.c"
+        "file": "kernel/string.c"
     },
     {
         "arguments": [
@@ -802,11 +464,11 @@
             "-fno-pie",
             "-no-pie",
             "-o",
-            "kernel/console.o",
-            "kernel/console.c"
+            "kernel/main.o",
+            "kernel/main.c"
         ],
         "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
-        "file": "kernel/console.c"
+        "file": "kernel/main.c"
     },
     {
         "arguments": [
@@ -828,11 +490,74 @@
             "-fno-pie",
             "-no-pie",
             "-o",
-            "kernel/string.o",
-            "kernel/string.c"
+            "user/usertests.o",
+            "user/usertests.c"
         ],
         "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
-        "file": "kernel/string.c"
+        "file": "user/usertests.c"
+    },
+    {
+        "arguments": [
+            "riscv64-linux-gnu-gcc",
+            "-c",
+            "-Wall",
+            "-Werror",
+            "-O",
+            "-fno-omit-frame-pointer",
+            "-ggdb",
+            "-DSOL_SYSCALL",
+            "-mcmodel=medany",
+            "-ffreestanding",
+            "-fno-common",
+            "-nostdlib",
+            "-mno-relax",
+            "-I.",
+            "-fno-stack-protector",
+            "-fno-pie",
+            "-no-pie",
+            "-o",
+            "kernel/pipe.o",
+            "kernel/pipe.c"
+        ],
+        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
+        "file": "kernel/pipe.c"
+    },
+    {
+        "arguments": [
+            "riscv64-linux-gnu-gcc",
+            "-c",
+            "-Wall",
+            "-Werror",
+            "-O",
+            "-fno-omit-frame-pointer",
+            "-ggdb",
+            "-DSOL_SYSCALL",
+            "-mcmodel=medany",
+            "-ffreestanding",
+            "-fno-common",
+            "-nostdlib",
+            "-mno-relax",
+            "-I.",
+            "-fno-stack-protector",
+            "-fno-pie",
+            "-no-pie",
+            "-o",
+            "kernel/exec.o",
+            "kernel/exec.c"
+        ],
+        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
+        "file": "kernel/exec.c"
+    },
+    {
+        "arguments": [
+            "riscv64-linux-gnu-gcc",
+            "-c",
+            "-o",
+            "kernel/entry.o",
+            "kernel/entry.S"
+        ],
+        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
+        "file": "kernel/entry.S"
     },
     {
         "arguments": [
@@ -880,89 +605,11 @@
             "-fno-pie",
             "-no-pie",
             "-o",
-            "user/echo.o",
-            "user/echo.c"
+            "user/init.o",
+            "user/init.c"
         ],
         "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
-        "file": "user/echo.c"
-    },
-    {
-        "arguments": [
-            "riscv64-linux-gnu-gcc",
-            "-c",
-            "-Wall",
-            "-Werror",
-            "-O",
-            "-fno-omit-frame-pointer",
-            "-ggdb",
-            "-DSOL_SYSCALL",
-            "-mcmodel=medany",
-            "-ffreestanding",
-            "-fno-common",
-            "-nostdlib",
-            "-mno-relax",
-            "-I.",
-            "-fno-stack-protector",
-            "-fno-pie",
-            "-no-pie",
-            "-o",
-            "user/sh.o",
-            "user/sh.c"
-        ],
-        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
-        "file": "user/sh.c"
-    },
-    {
-        "arguments": [
-            "riscv64-linux-gnu-gcc",
-            "-c",
-            "-Wall",
-            "-Werror",
-            "-O",
-            "-fno-omit-frame-pointer",
-            "-ggdb",
-            "-DSOL_SYSCALL",
-            "-mcmodel=medany",
-            "-ffreestanding",
-            "-fno-common",
-            "-nostdlib",
-            "-mno-relax",
-            "-I.",
-            "-fno-stack-protector",
-            "-fno-pie",
-            "-no-pie",
-            "-o",
-            "kernel/plic.o",
-            "kernel/plic.c"
-        ],
-        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
-        "file": "kernel/plic.c"
-    },
-    {
-        "arguments": [
-            "riscv64-linux-gnu-gcc",
-            "-c",
-            "-Wall",
-            "-Werror",
-            "-O",
-            "-fno-omit-frame-pointer",
-            "-ggdb",
-            "-DSOL_SYSCALL",
-            "-mcmodel=medany",
-            "-ffreestanding",
-            "-fno-common",
-            "-nostdlib",
-            "-mno-relax",
-            "-I.",
-            "-fno-stack-protector",
-            "-fno-pie",
-            "-no-pie",
-            "-o",
-            "user/forktest.o",
-            "user/forktest.c"
-        ],
-        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
-        "file": "user/forktest.c"
+        "file": "user/init.c"
     },
     {
         "arguments": [
@@ -1010,22 +657,11 @@
             "-fno-pie",
             "-no-pie",
             "-o",
-            "kernel/main.o",
-            "kernel/main.c"
+            "user/kill.o",
+            "user/kill.c"
         ],
         "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
-        "file": "kernel/main.c"
-    },
-    {
-        "arguments": [
-            "riscv64-linux-gnu-gcc",
-            "-c",
-            "-o",
-            "kernel/trampoline.o",
-            "kernel/trampoline.S"
-        ],
-        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
-        "file": "kernel/trampoline.S"
+        "file": "user/kill.c"
     },
     {
         "arguments": [
@@ -1047,59 +683,22 @@
             "-fno-pie",
             "-no-pie",
             "-o",
-            "user/mkdir.o",
-            "user/mkdir.c"
+            "user/ulib.o",
+            "user/ulib.c"
         ],
         "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
-        "file": "user/mkdir.c"
-    },
-    {
-        "arguments": [
-            "riscv64-linux-gnu-gcc",
-            "-c",
-            "-Wall",
-            "-Werror",
-            "-O",
-            "-fno-omit-frame-pointer",
-            "-ggdb",
-            "-DSOL_SYSCALL",
-            "-mcmodel=medany",
-            "-ffreestanding",
-            "-fno-common",
-            "-nostdlib",
-            "-mno-relax",
-            "-I.",
-            "-fno-stack-protector",
-            "-fno-pie",
-            "-no-pie",
-            "-o",
-            "user/grind.o",
-            "user/grind.c"
-        ],
-        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
-        "file": "user/grind.c"
+        "file": "user/ulib.c"
     },
     {
         "arguments": [
             "riscv64-linux-gnu-gcc",
             "-c",
             "-o",
-            "kernel/entry.o",
-            "kernel/entry.S"
+            "kernel/kernelvec.o",
+            "kernel/kernelvec.S"
         ],
         "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
-        "file": "kernel/entry.S"
-    },
-    {
-        "arguments": [
-            "riscv64-linux-gnu-gcc",
-            "-c",
-            "-o",
-            "kernel/swtch.o",
-            "kernel/swtch.S"
-        ],
-        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
-        "file": "kernel/swtch.S"
+        "file": "kernel/kernelvec.S"
     },
     {
         "arguments": [
@@ -1147,11 +746,11 @@
             "-fno-pie",
             "-no-pie",
             "-o",
-            "user/kill.o",
-            "user/kill.c"
+            "kernel/file.o",
+            "kernel/file.c"
         ],
         "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
-        "file": "user/kill.c"
+        "file": "kernel/file.c"
     },
     {
         "arguments": [
@@ -1173,11 +772,37 @@
             "-fno-pie",
             "-no-pie",
             "-o",
-            "user/ln.o",
-            "user/ln.c"
+            "kernel/spinlock.o",
+            "kernel/spinlock.c"
         ],
         "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
-        "file": "user/ln.c"
+        "file": "kernel/spinlock.c"
+    },
+    {
+        "arguments": [
+            "riscv64-linux-gnu-gcc",
+            "-c",
+            "-Wall",
+            "-Werror",
+            "-O",
+            "-fno-omit-frame-pointer",
+            "-ggdb",
+            "-DSOL_SYSCALL",
+            "-mcmodel=medany",
+            "-ffreestanding",
+            "-fno-common",
+            "-nostdlib",
+            "-mno-relax",
+            "-I.",
+            "-fno-stack-protector",
+            "-fno-pie",
+            "-no-pie",
+            "-o",
+            "user/cat.o",
+            "user/cat.c"
+        ],
+        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
+        "file": "user/cat.c"
     },
     {
         "arguments": [
@@ -1225,10 +850,385 @@
             "-fno-pie",
             "-no-pie",
             "-o",
+            "kernel/console.o",
+            "kernel/console.c"
+        ],
+        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
+        "file": "kernel/console.c"
+    },
+    {
+        "arguments": [
+            "riscv64-linux-gnu-gcc",
+            "-c",
+            "-Wall",
+            "-Werror",
+            "-O",
+            "-fno-omit-frame-pointer",
+            "-ggdb",
+            "-DSOL_SYSCALL",
+            "-mcmodel=medany",
+            "-ffreestanding",
+            "-fno-common",
+            "-nostdlib",
+            "-mno-relax",
+            "-I.",
+            "-fno-stack-protector",
+            "-fno-pie",
+            "-no-pie",
+            "-o",
+            "user/rm.o",
+            "user/rm.c"
+        ],
+        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
+        "file": "user/rm.c"
+    },
+    {
+        "arguments": [
+            "riscv64-linux-gnu-gcc",
+            "-c",
+            "-Wall",
+            "-Werror",
+            "-O",
+            "-fno-omit-frame-pointer",
+            "-ggdb",
+            "-DSOL_SYSCALL",
+            "-mcmodel=medany",
+            "-ffreestanding",
+            "-fno-common",
+            "-nostdlib",
+            "-mno-relax",
+            "-I.",
+            "-fno-stack-protector",
+            "-fno-pie",
+            "-no-pie",
+            "-o",
+            "user/ls.o",
+            "user/ls.c"
+        ],
+        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
+        "file": "user/ls.c"
+    },
+    {
+        "arguments": [
+            "riscv64-linux-gnu-gcc",
+            "-c",
+            "-Wall",
+            "-Werror",
+            "-O",
+            "-fno-omit-frame-pointer",
+            "-ggdb",
+            "-DSOL_SYSCALL",
+            "-mcmodel=medany",
+            "-ffreestanding",
+            "-fno-common",
+            "-nostdlib",
+            "-mno-relax",
+            "-I.",
+            "-fno-stack-protector",
+            "-fno-pie",
+            "-no-pie",
+            "-o",
+            "user/grind.o",
+            "user/grind.c"
+        ],
+        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
+        "file": "user/grind.c"
+    },
+    {
+        "arguments": [
+            "riscv64-linux-gnu-gcc",
+            "-c",
+            "-Wall",
+            "-Werror",
+            "-O",
+            "-fno-omit-frame-pointer",
+            "-ggdb",
+            "-DSOL_SYSCALL",
+            "-mcmodel=medany",
+            "-ffreestanding",
+            "-fno-common",
+            "-nostdlib",
+            "-mno-relax",
+            "-I.",
+            "-fno-stack-protector",
+            "-fno-pie",
+            "-no-pie",
+            "-o",
+            "kernel/vm.o",
+            "kernel/vm.c"
+        ],
+        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
+        "file": "kernel/vm.c"
+    },
+    {
+        "arguments": [
+            "riscv64-linux-gnu-gcc",
+            "-c",
+            "-o",
+            "kernel/trampoline.o",
+            "kernel/trampoline.S"
+        ],
+        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
+        "file": "kernel/trampoline.S"
+    },
+    {
+        "arguments": [
+            "riscv64-linux-gnu-gcc",
+            "-c",
+            "-Wall",
+            "-Werror",
+            "-O",
+            "-fno-omit-frame-pointer",
+            "-ggdb",
+            "-DSOL_SYSCALL",
+            "-mcmodel=medany",
+            "-ffreestanding",
+            "-fno-common",
+            "-nostdlib",
+            "-mno-relax",
+            "-I.",
+            "-fno-stack-protector",
+            "-fno-pie",
+            "-no-pie",
+            "-o",
             "kernel/start.o",
             "kernel/start.c"
         ],
         "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
         "file": "kernel/start.c"
+    },
+    {
+        "arguments": [
+            "riscv64-linux-gnu-gcc",
+            "-c",
+            "-Wall",
+            "-Werror",
+            "-O",
+            "-fno-omit-frame-pointer",
+            "-ggdb",
+            "-DSOL_SYSCALL",
+            "-mcmodel=medany",
+            "-ffreestanding",
+            "-fno-common",
+            "-nostdlib",
+            "-mno-relax",
+            "-I.",
+            "-fno-stack-protector",
+            "-fno-pie",
+            "-no-pie",
+            "-o",
+            "kernel/virtio_disk.o",
+            "kernel/virtio_disk.c"
+        ],
+        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
+        "file": "kernel/virtio_disk.c"
+    },
+    {
+        "arguments": [
+            "riscv64-linux-gnu-gcc",
+            "-c",
+            "-Wall",
+            "-Werror",
+            "-O",
+            "-fno-omit-frame-pointer",
+            "-ggdb",
+            "-DSOL_SYSCALL",
+            "-mcmodel=medany",
+            "-ffreestanding",
+            "-fno-common",
+            "-nostdlib",
+            "-mno-relax",
+            "-I.",
+            "-fno-stack-protector",
+            "-fno-pie",
+            "-no-pie",
+            "-o",
+            "user/grep.o",
+            "user/grep.c"
+        ],
+        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
+        "file": "user/grep.c"
+    },
+    {
+        "arguments": [
+            "riscv64-linux-gnu-gcc",
+            "-c",
+            "-Wall",
+            "-Werror",
+            "-O",
+            "-fno-omit-frame-pointer",
+            "-ggdb",
+            "-DSOL_SYSCALL",
+            "-mcmodel=medany",
+            "-ffreestanding",
+            "-fno-common",
+            "-nostdlib",
+            "-mno-relax",
+            "-I.",
+            "-fno-stack-protector",
+            "-fno-pie",
+            "-no-pie",
+            "-o",
+            "kernel/sysfile.o",
+            "kernel/sysfile.c"
+        ],
+        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
+        "file": "kernel/sysfile.c"
+    },
+    {
+        "arguments": [
+            "riscv64-linux-gnu-gcc",
+            "-c",
+            "-Wall",
+            "-Werror",
+            "-O",
+            "-fno-omit-frame-pointer",
+            "-ggdb",
+            "-DSOL_SYSCALL",
+            "-mcmodel=medany",
+            "-ffreestanding",
+            "-fno-common",
+            "-nostdlib",
+            "-mno-relax",
+            "-I.",
+            "-fno-stack-protector",
+            "-fno-pie",
+            "-no-pie",
+            "-o",
+            "user/sh.o",
+            "user/sh.c"
+        ],
+        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
+        "file": "user/sh.c"
+    },
+    {
+        "arguments": [
+            "riscv64-linux-gnu-gcc",
+            "-c",
+            "-Wall",
+            "-Werror",
+            "-O",
+            "-fno-omit-frame-pointer",
+            "-ggdb",
+            "-DSOL_SYSCALL",
+            "-mcmodel=medany",
+            "-ffreestanding",
+            "-fno-common",
+            "-nostdlib",
+            "-mno-relax",
+            "-I.",
+            "-fno-stack-protector",
+            "-fno-pie",
+            "-no-pie",
+            "-o",
+            "user/forktest.o",
+            "user/forktest.c"
+        ],
+        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
+        "file": "user/forktest.c"
+    },
+    {
+        "arguments": [
+            "riscv64-linux-gnu-gcc",
+            "-c",
+            "-Wall",
+            "-Werror",
+            "-O",
+            "-fno-omit-frame-pointer",
+            "-ggdb",
+            "-DSOL_SYSCALL",
+            "-mcmodel=medany",
+            "-ffreestanding",
+            "-fno-common",
+            "-nostdlib",
+            "-mno-relax",
+            "-I.",
+            "-fno-stack-protector",
+            "-fno-pie",
+            "-no-pie",
+            "-o",
+            "user/stressfs.o",
+            "user/stressfs.c"
+        ],
+        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
+        "file": "user/stressfs.c"
+    },
+    {
+        "arguments": [
+            "riscv64-linux-gnu-gcc",
+            "-c",
+            "-Wall",
+            "-Werror",
+            "-O",
+            "-fno-omit-frame-pointer",
+            "-ggdb",
+            "-DSOL_SYSCALL",
+            "-mcmodel=medany",
+            "-ffreestanding",
+            "-fno-common",
+            "-nostdlib",
+            "-mno-relax",
+            "-I.",
+            "-fno-stack-protector",
+            "-fno-pie",
+            "-no-pie",
+            "-o",
+            "kernel/plic.o",
+            "kernel/plic.c"
+        ],
+        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
+        "file": "kernel/plic.c"
+    },
+    {
+        "arguments": [
+            "riscv64-linux-gnu-gcc",
+            "-c",
+            "-Wall",
+            "-Werror",
+            "-O",
+            "-fno-omit-frame-pointer",
+            "-ggdb",
+            "-DSOL_SYSCALL",
+            "-mcmodel=medany",
+            "-ffreestanding",
+            "-fno-common",
+            "-nostdlib",
+            "-mno-relax",
+            "-I.",
+            "-fno-stack-protector",
+            "-fno-pie",
+            "-no-pie",
+            "-o",
+            "kernel/bio.o",
+            "kernel/bio.c"
+        ],
+        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
+        "file": "kernel/bio.c"
+    },
+    {
+        "arguments": [
+            "riscv64-linux-gnu-gcc",
+            "-c",
+            "-Wall",
+            "-Werror",
+            "-O",
+            "-fno-omit-frame-pointer",
+            "-ggdb",
+            "-DSOL_SYSCALL",
+            "-mcmodel=medany",
+            "-ffreestanding",
+            "-fno-common",
+            "-nostdlib",
+            "-mno-relax",
+            "-I.",
+            "-fno-stack-protector",
+            "-fno-pie",
+            "-no-pie",
+            "-o",
+            "kernel/proc.o",
+            "kernel/proc.c"
+        ],
+        "directory": "/home/qlhhahaha/MIT_6S081_20fall/MIT6.S081-20fall",
+        "file": "kernel/proc.c"
     }
 ]
