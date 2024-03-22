@@ -1,0 +1,15 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            // "includePath": [],
+            // "defines": [],
+            // "compilerPath": "/usr/bin/riscv64-linux-gnu-gcc",
+            // "cStandard": "gnu17",
+            // "intelliSenseMode": "${default}",
+            "compileCommands": "${workspaceFolder}/.vscode/compile_commands.json"
+            // "configurationProvider": "ms-vscode.makefile-tools"
+        }
+    ],
+    "version": 4
+}

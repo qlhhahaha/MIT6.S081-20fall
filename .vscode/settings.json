@@ -1,0 +1,26 @@
+{
+    "files.associations": {
+        "stat.h": "c",
+        "user.h": "c",
+        "fcntl.h": "c",
+        "types.h": "c",
+        "memlayout.h": "c",
+        "proc.h": "c",
+        "param.h": "c",
+        "riscv.h": "c",
+        "spinlock.h": "c",
+        "defs.h": "c",
+        "fs.h": "c"
+    },
+
+    "multiCommand.commands": 
+    [
+        {
+            "command": "multiCommand.enterExec",
+            "sequence": [
+                "repl.action.acceptInput",
+                {"command": "editor.action.insertSnippet", "args": {"snippet": "-exec "}}
+            ]
+        }
+    ]
+}

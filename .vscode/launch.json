@@ -1,0 +1,35 @@
+//launch.json
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "debug xv6",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/kernel/kernel",
+            "args": [],
+            "stopAtEntry": true,
+            "cwd": "${workspaceFolder}",
+            "miDebuggerServerAddress": "127.0.0.1:26000",
+            //这里实际上可以用各种能调试的gdb，如果找不到你可以使用which gdb-multiarch
+            //但要注意的是，为了能在ubuntu20.04调出寄存器，强烈建议使用riscv64的gdb
+            "miDebuggerPath": "/usr/bin/gdb-multiarch",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "preLaunchTask": "xv6build",
+            "setupCommands": [
+                {
+                    "description": "pretty printing",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true,
+                },
+            ],
+            //用于gdb调试的工具，可以发现gdb出错的原因
+            // "logging": {
+            //     "engineLogging": true,
+            //     "programOutput": true,
+            // }
+        }
+    ]
+}

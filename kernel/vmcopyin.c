@@ -16,10 +16,10 @@ static struct stats {
 } stats;
 
 int
-statscopyin(char *buf, int sz) {
+statscopyin(char* buf, int sz) {
   int n;
   n = snprintf(buf, sz, "copyin: %d\n", stats.ncopyin);
-  n += snprintf(buf+n, sz, "copyinstr: %d\n", stats.ncopyinstr);
+  n += snprintf(buf + n, sz, "copyinstr: %d\n", stats.ncopyinstr);
   return n;
 }
 
@@ -27,13 +27,13 @@ statscopyin(char *buf, int sz) {
 // Copy len bytes to dst from virtual address srcva in a given page table.
 // Return 0 on success, -1 on error.
 int
-copyin_new(pagetable_t pagetable, char *dst, uint64 srcva, uint64 len)
+copyin_new(pagetable_t pagetable, char* dst, uint64 srcva, uint64 len)
 {
-  struct proc *p = myproc();
-
-  if (srcva >= p->sz || srcva+len >= p->sz || srcva+len < srcva)
+  struct proc* p = myproc();
+  // printf("trace: copyin_new %p, %p, %p, %d\n", r_satp(), dst, srcva, len);
+  if (srcva >= p->sz || srcva + len >= p->sz || srcva + len < srcva)
     return -1;
-  memmove((void *) dst, (void *)srcva, len);
+  memmove((void*)dst, (void*)srcva, len);
   stats.ncopyin++;   // XXX lock
   return 0;
 }
@@ -43,15 +43,16 @@ copyin_new(pagetable_t pagetable, char *dst, uint64 srcva, uint64 len)
 // until a '\0', or max.
 // Return 0 on success, -1 on error.
 int
-copyinstr_new(pagetable_t pagetable, char *dst, uint64 srcva, uint64 max)
+copyinstr_new(pagetable_t pagetable, char* dst, uint64 srcva, uint64 max)
 {
-  struct proc *p = myproc();
-  char *s = (char *) srcva;
-  
+  // printf("trace: copyinstr_new %p, %p, %p, %d\n", r_satp(), dst, srcva, max);
+  struct proc* p = myproc();
+  char* s = (char*)srcva;
+
   stats.ncopyinstr++;   // XXX lock
-  for(int i = 0; i < max && srcva + i < p->sz; i++){
+  for (int i = 0; i < max && srcva + i < p->sz; i++) {
     dst[i] = s[i];
-    if(s[i] == '\0')
+    if (s[i] == '\0')
       return 0;
   }
   return -1;

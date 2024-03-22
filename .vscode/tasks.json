@@ -1,0 +1,29 @@
+// tasks.json
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "xv6build",
+            "type": "shell",
+            "isBackground": true,
+            "command": "make qemu-gdb",
+            "problemMatcher": [
+                {
+                    "pattern": [
+                        {
+                            "regexp": ".",
+                            "file": 1,
+                            "location": 2,
+                            "message": 3
+                        }
+                    ],
+                    "background": {
+                        "beginsPattern": ".*qlh run 'gdb' in another window.",
+                        // 要对应编译成功后,一句echo的内容. 此处对应 Makefile Line:170
+                        "endsPattern": "."
+                    }
+                }
+            ]
+        }
+    ]
+}
