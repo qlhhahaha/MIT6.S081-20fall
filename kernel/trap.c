@@ -70,9 +70,19 @@ usertrap(void)
         // ok
     }
     else {
-        printf("usertrap(): unexpected scause %p pid=%d\n", r_scause(), p->pid);
-        printf("            sepc=%p stval=%p\n", r_sepc(), r_stval());
-        p->killed = 1;
+        uint64 va = r_stval();
+        if ((r_scause() == 13 || r_scause() == 15) && uvm_lazy_check(va)) {
+            // 如果发生了缺页异常且是在懒分配地址上发生的,则分配物理地址
+            uvm_lazy_allocation(va);
+
+        }
+        else {
+            // 如果没发生缺页异常，或者在非懒分配地址上发生的缺页异常,则直接杀死进程并报错
+            printf("usertrap(): unexpected scause %p pid=%d\n", r_scause(), p->pid);
+            printf("            sepc=%p stval=%p\n", r_sepc(), r_stval());
+            p->killed = 1;
+
+        }
     }
 
     if (p->killed)

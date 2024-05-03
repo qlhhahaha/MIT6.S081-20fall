@@ -5,6 +5,8 @@
 #include "riscv.h"
 #include "defs.h"
 #include "fs.h"
+#include "spinlock.h"
+#include "proc.h"
 
 /*
  * the kernel's page table.
@@ -182,7 +184,8 @@ uvmunmap(pagetable_t pagetable, uint64 va, uint64 npages, int do_free)
 
     for (a = va; a < va + npages * PGSIZE; a += PGSIZE) {
         if ((pte = walk(pagetable, a, 0)) == 0)
-            panic("uvmunmap: walk");
+            // panic("uvmunmap: walk");
+            continue;
 
         if ((*pte & PTE_V) == 0)
             // panic("uvmunmap: not mapped");
@@ -322,11 +325,16 @@ uvmcopy(pagetable_t old, pagetable_t new, uint64 sz)
 
     for (i = 0; i < sz; i += PGSIZE) {
         if ((pte = walk(old, i, 0)) == 0)
-            panic("uvmcopy: pte should exist");
+            // panic("uvmcopy: pte should exist");
+            continue;
+
         if ((*pte & PTE_V) == 0)
-            panic("uvmcopy: page not present");
+            // panic("uvmcopy: page not present");
+            continue;
+
         pa = PTE2PA(*pte);
         flags = PTE_FLAGS(*pte);
+
         if ((mem = kalloc()) == 0)
             goto err;
         memmove(mem, (char*)pa, PGSIZE);
@@ -363,6 +371,11 @@ copyout(pagetable_t pagetable, uint64 dstva, char* src, uint64 len)
 {
     uint64 n, va0, pa0;
 
+    // 修改这个解决了 read/write 时的错误 (usertests 中的 sbrkarg 失败的问题)
+    if (uvm_lazy_check(dstva)) {
+        uvm_lazy_allocation(dstva);
+    }
+
     while (len > 0) {
         va0 = PGROUNDDOWN(dstva);
         pa0 = walkaddr(pagetable, va0);
@@ -387,6 +400,9 @@ int
 copyin(pagetable_t pagetable, char* dst, uint64 srcva, uint64 len)
 {
     uint64 n, va0, pa0;
+    if (uvm_lazy_check(srcva)) {
+        uvm_lazy_allocation(srcva);
+    }
 
     while (len > 0) {
         va0 = PGROUNDDOWN(srcva);
@@ -448,4 +464,32 @@ copyinstr(pagetable_t pagetable, char* dst, uint64 srcva, uint64 max)
     else {
         return -1;
     }
+}
+
+
+void uvm_lazy_allocation(uint64 va) {
+    struct proc* p = myproc();
+    char* mem = kalloc();
+    if (mem == 0) {
+        // failed to allocate physical memory
+        printf("lazy alloc: out of memory\n");
+        p->killed = 1;
+    }
+    else {
+        memset(mem, 0, PGSIZE);
+        if (mappages(p->pagetable, PGROUNDDOWN(va), PGSIZE, (uint64)mem, PTE_W | PTE_X | PTE_R | PTE_U) != 0) {
+            printf("lazy alloc: failed to map page\n");
+            kfree(mem);
+            p->killed = 1;
+        }
+    }
+}
+
+int uvm_lazy_check(uint64 va) {
+    pte_t* pte;
+    struct proc* p = myproc();
+
+    return va < p->sz  // 在进程的内存范围内
+        && (PGROUNDDOWN(va) != r_sp())  // 没有访问stack guard page
+        && ((pte = walk(p->pagetable, va, 0)) == 0 || ((*pte & PTE_V) == 0));  // pte不存在
 }
