@@ -3,7 +3,7 @@ static inline uint64
 r_mhartid()
 {
   uint64 x;
-  asm volatile("csrr %0, mhartid" : "=r" (x) );
+  asm volatile("csrr %0, mhartid" : "=r" (x));
   return x;
 }
 
@@ -19,11 +19,11 @@ static inline uint64
 r_mstatus()
 {
   uint64 x;
-  asm volatile("csrr %0, mstatus" : "=r" (x) );
+  asm volatile("csrr %0, mstatus" : "=r" (x));
   return x;
 }
 
-static inline void 
+static inline void
 w_mstatus(uint64 x)
 {
   asm volatile("csrw mstatus, %0" : : "r" (x));
@@ -32,7 +32,7 @@ w_mstatus(uint64 x)
 // machine exception program counter, holds the
 // instruction address to which a return from
 // exception will go.
-static inline void 
+static inline void
 w_mepc(uint64 x)
 {
   asm volatile("csrw mepc, %0" : : "r" (x));
@@ -50,11 +50,11 @@ static inline uint64
 r_sstatus()
 {
   uint64 x;
-  asm volatile("csrr %0, sstatus" : "=r" (x) );
+  asm volatile("csrr %0, sstatus" : "=r" (x));
   return x;
 }
 
-static inline void 
+static inline void
 w_sstatus(uint64 x)
 {
   asm volatile("csrw sstatus, %0" : : "r" (x));
@@ -65,11 +65,11 @@ static inline uint64
 r_sip()
 {
   uint64 x;
-  asm volatile("csrr %0, sip" : "=r" (x) );
+  asm volatile("csrr %0, sip" : "=r" (x));
   return x;
 }
 
-static inline void 
+static inline void
 w_sip(uint64 x)
 {
   asm volatile("csrw sip, %0" : : "r" (x));
@@ -83,11 +83,11 @@ static inline uint64
 r_sie()
 {
   uint64 x;
-  asm volatile("csrr %0, sie" : "=r" (x) );
+  asm volatile("csrr %0, sie" : "=r" (x));
   return x;
 }
 
-static inline void 
+static inline void
 w_sie(uint64 x)
 {
   asm volatile("csrw sie, %0" : : "r" (x));
@@ -101,11 +101,11 @@ static inline uint64
 r_mie()
 {
   uint64 x;
-  asm volatile("csrr %0, mie" : "=r" (x) );
+  asm volatile("csrr %0, mie" : "=r" (x));
   return x;
 }
 
-static inline void 
+static inline void
 w_mie(uint64 x)
 {
   asm volatile("csrw mie, %0" : : "r" (x));
@@ -114,7 +114,7 @@ w_mie(uint64 x)
 // machine exception program counter, holds the
 // instruction address to which a return from
 // exception will go.
-static inline void 
+static inline void
 w_sepc(uint64 x)
 {
   asm volatile("csrw sepc, %0" : : "r" (x));
@@ -124,7 +124,7 @@ static inline uint64
 r_sepc()
 {
   uint64 x;
-  asm volatile("csrr %0, sepc" : "=r" (x) );
+  asm volatile("csrr %0, sepc" : "=r" (x));
   return x;
 }
 
@@ -133,11 +133,11 @@ static inline uint64
 r_medeleg()
 {
   uint64 x;
-  asm volatile("csrr %0, medeleg" : "=r" (x) );
+  asm volatile("csrr %0, medeleg" : "=r" (x));
   return x;
 }
 
-static inline void 
+static inline void
 w_medeleg(uint64 x)
 {
   asm volatile("csrw medeleg, %0" : : "r" (x));
@@ -148,11 +148,11 @@ static inline uint64
 r_mideleg()
 {
   uint64 x;
-  asm volatile("csrr %0, mideleg" : "=r" (x) );
+  asm volatile("csrr %0, mideleg" : "=r" (x));
   return x;
 }
 
-static inline void 
+static inline void
 w_mideleg(uint64 x)
 {
   asm volatile("csrw mideleg, %0" : : "r" (x));
@@ -160,7 +160,7 @@ w_mideleg(uint64 x)
 
 // Supervisor Trap-Vector Base Address
 // low two bits are mode.
-static inline void 
+static inline void
 w_stvec(uint64 x)
 {
   asm volatile("csrw stvec, %0" : : "r" (x));
@@ -170,12 +170,12 @@ static inline uint64
 r_stvec()
 {
   uint64 x;
-  asm volatile("csrr %0, stvec" : "=r" (x) );
+  asm volatile("csrr %0, stvec" : "=r" (x));
   return x;
 }
 
 // Machine-mode interrupt vector
-static inline void 
+static inline void
 w_mtvec(uint64 x)
 {
   asm volatile("csrw mtvec, %0" : : "r" (x));
@@ -188,7 +188,7 @@ w_mtvec(uint64 x)
 
 // supervisor address translation and protection;
 // holds the address of the page table.
-static inline void 
+static inline void
 w_satp(uint64 x)
 {
   asm volatile("csrw satp, %0" : : "r" (x));
@@ -198,18 +198,18 @@ static inline uint64
 r_satp()
 {
   uint64 x;
-  asm volatile("csrr %0, satp" : "=r" (x) );
+  asm volatile("csrr %0, satp" : "=r" (x));
   return x;
 }
 
 // Supervisor Scratch register, for early trap handler in trampoline.S.
-static inline void 
+static inline void
 w_sscratch(uint64 x)
 {
   asm volatile("csrw sscratch, %0" : : "r" (x));
 }
 
-static inline void 
+static inline void
 w_mscratch(uint64 x)
 {
   asm volatile("csrw mscratch, %0" : : "r" (x));
@@ -220,7 +220,7 @@ static inline uint64
 r_scause()
 {
   uint64 x;
-  asm volatile("csrr %0, scause" : "=r" (x) );
+  asm volatile("csrr %0, scause" : "=r" (x));
   return x;
 }
 
@@ -229,12 +229,12 @@ static inline uint64
 r_stval()
 {
   uint64 x;
-  asm volatile("csrr %0, stval" : "=r" (x) );
+  asm volatile("csrr %0, stval" : "=r" (x));
   return x;
 }
 
 // Machine-mode Counter-Enable
-static inline void 
+static inline void
 w_mcounteren(uint64 x)
 {
   asm volatile("csrw mcounteren, %0" : : "r" (x));
@@ -244,7 +244,7 @@ static inline uint64
 r_mcounteren()
 {
   uint64 x;
-  asm volatile("csrr %0, mcounteren" : "=r" (x) );
+  asm volatile("csrr %0, mcounteren" : "=r" (x));
   return x;
 }
 
@@ -253,7 +253,7 @@ static inline uint64
 r_time()
 {
   uint64 x;
-  asm volatile("csrr %0, time" : "=r" (x) );
+  asm volatile("csrr %0, time" : "=r" (x));
   return x;
 }
 
@@ -283,7 +283,7 @@ static inline uint64
 r_sp()
 {
   uint64 x;
-  asm volatile("mv %0, sp" : "=r" (x) );
+  asm volatile("mv %0, sp" : "=r" (x));
   return x;
 }
 
@@ -293,11 +293,11 @@ static inline uint64
 r_tp()
 {
   uint64 x;
-  asm volatile("mv %0, tp" : "=r" (x) );
+  asm volatile("mv %0, tp" : "=r" (x));
   return x;
 }
 
-static inline void 
+static inline void
 w_tp(uint64 x)
 {
   asm volatile("mv tp, %0" : : "r" (x));
@@ -307,7 +307,7 @@ static inline uint64
 r_ra()
 {
   uint64 x;
-  asm volatile("mv %0, ra" : "=r" (x) );
+  asm volatile("mv %0, ra" : "=r" (x));
   return x;
 }
 
@@ -331,6 +331,8 @@ sfence_vma()
 #define PTE_W (1L << 2)
 #define PTE_X (1L << 3)
 #define PTE_U (1L << 4) // 1 -> user can access
+#define PTE_COW (1L << 8) // 是否为懒复制页，使用页表项 flags 中保留的第 8 位表示
+// （页表项 flags 中，第 8、9、10 位均为保留给操作系统使用的位，可以用作任意自定义用途）
 
 // shift a physical address to the right place for a PTE.
 #define PA2PTE(pa) ((((uint64)pa) >> 12) << 10)
@@ -351,4 +353,4 @@ sfence_vma()
 #define MAXVA (1L << (9 + 9 + 9 + 12 - 1))
 
 typedef uint64 pte_t;
-typedef uint64 *pagetable_t; // 512 PTEs
+typedef uint64* pagetable_t; // 512 PTEs

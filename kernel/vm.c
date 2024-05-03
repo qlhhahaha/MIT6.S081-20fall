@@ -313,22 +313,31 @@ uvmcopy(pagetable_t old, pagetable_t new, uint64 sz)
     pte_t* pte;
     uint64 pa, i;
     uint flags;
-    char* mem;
 
     for (i = 0; i < sz; i += PGSIZE) {
         if ((pte = walk(old, i, 0)) == 0)
             panic("uvmcopy: pte should exist");
         if ((*pte & PTE_V) == 0)
             panic("uvmcopy: page not present");
+
         pa = PTE2PA(*pte);
+
+        if (*pte & PTE_W) {
+            // 清除父进程的 PTE_W 标志位，设置 PTE_COW 标志位表示是一个懒复制页（多个进程引用同个物理页）
+            *pte = (*pte & ~PTE_W) | PTE_COW;
+        }
+
         flags = PTE_FLAGS(*pte);
-        if ((mem = kalloc()) == 0)
-            goto err;
-        memmove(mem, (char*)pa, PGSIZE);
-        if (mappages(new, i, PGSIZE, (uint64)mem, flags) != 0) {
-            kfree(mem);
+
+        // 将父进程的物理页直接 map 到子进程 （懒复制）
+        // 权限设置和父进程一致
+        // （不可写+PTE_COW，或者如果父进程页本身单纯只读非 COW，则子进程页同样只读且无 COW 标识）
+        if (mappages(new, i, PGSIZE, (uint64)pa, flags) != 0) {
             goto err;
         }
+
+        // 将物理页的引用次数增加 1
+        // add_cow_refer();
     }
     return 0;
 
