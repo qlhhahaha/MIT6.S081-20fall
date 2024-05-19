@@ -23,6 +23,7 @@ struct {
     struct run* freelist;
 } kmem[NCPU];
 
+
 char* kmem_lock_names[] = {
     "kmem_cpu_0",
     "kmem_cpu_1",
