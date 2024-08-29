@@ -12,30 +12,34 @@
 // mkfs computes the super block and builds an initial file system. The
 // super block describes the disk layout:
 struct superblock {
-  uint magic;        // Must be FSMAGIC
-  uint size;         // Size of file system image (blocks)
-  uint nblocks;      // Number of data blocks
-  uint ninodes;      // Number of inodes.
-  uint nlog;         // Number of log blocks
-  uint logstart;     // Block number of first log block
-  uint inodestart;   // Block number of first inode block
-  uint bmapstart;    // Block number of first free map block
+    uint magic;        // Must be FSMAGIC
+    uint size;         // Size of file system image (blocks)
+    uint nblocks;      // Number of data blocks
+    uint ninodes;      // Number of inodes.
+    uint nlog;         // Number of log blocks
+    uint logstart;     // Block number of first log block
+    uint inodestart;   // Block number of first inode block
+    uint bmapstart;    // Block number of first free map block
 };
 
 #define FSMAGIC 0x10203040
 
-#define NDIRECT 12
+#define NDIRECT 11
 #define NINDIRECT (BSIZE / sizeof(uint))
-#define MAXFILE (NDIRECT + NINDIRECT)
+
+// qlh-modify
+#define NINDIRECT_DOUBLE (NINDIRECT) * (NINDIRECT)
+
+#define MAXFILE (NDIRECT + NINDIRECT + NINDIRECT_DOUBLE)
 
 // On-disk inode structure
 struct dinode {
-  short type;           // File type
-  short major;          // Major device number (T_DEVICE only)
-  short minor;          // Minor device number (T_DEVICE only)
-  short nlink;          // Number of links to inode in file system
-  uint size;            // Size of file (bytes)
-  uint addrs[NDIRECT+1];   // Data block addresses
+    short type;           // File type
+    short major;          // Major device number (T_DEVICE only)
+    short minor;          // Minor device number (T_DEVICE only)
+    short nlink;          // Number of links to inode in file system
+    uint size;            // Size of file (bytes)
+    uint addrs[NDIRECT + 2];   // Data block addresses
 };
 
 // Inodes per block.
@@ -54,7 +58,7 @@ struct dinode {
 #define DIRSIZ 14
 
 struct dirent {
-  ushort inum;
-  char name[DIRSIZ];
+    ushort inum;
+    char name[DIRSIZ];
 };
 
